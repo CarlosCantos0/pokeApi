@@ -1,9 +1,12 @@
 package com.example.pokeapi;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.PopupMenu;
 
@@ -63,11 +66,11 @@ public class FirstFragment extends Fragment {
         Handler handler = new Handler(Looper.getMainLooper());
         executor.execute(() -> {
             PokemonApi api = new PokemonApi();
-            ArrayList<Pokemon> pokemonsLista = new ArrayList<>();
+            ArrayList<Pokemon> pokemons = new ArrayList<>();
 
             handler.post(()-> {
-                adapter.clear();
-                adapter.addAll(pokemonsLista);
+                Adapter.clear();
+                Adapter.addAll(pokemons);
             });
         });
     }

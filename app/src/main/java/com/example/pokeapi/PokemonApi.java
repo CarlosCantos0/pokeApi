@@ -32,7 +32,7 @@ public class PokemonApi {
 
                 pokemon.setHeight(jsondetails.getInt("height"));
 
-                //pokemonsLista.add(pokemon);
+                pokemons.add(pokemon);
             }
 
             Log.e("XXXX POKEMONS XXXX", pokemons.toString());
