@@ -41,22 +41,33 @@ public class FirstFragment extends Fragment {
 
         ArrayList<Pokemon> items = new ArrayList<>();
 
-
-        ArrayAdapter<Pokemon> adapter = new ArrayAdapter<Pokemon>(
-                getContext(),
-                R.layout.lv_pokemon_row,
-                R.id.txtListName,
-                items
-        );
-
-        binding.lvPokemons.setAdapter(adapter);
-
         PokemonApi api = new PokemonApi();
         try {
             api.getPokemons();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        adapter = new PokemonAdapter(
+                getContext(),
+                R.layout.lv_pokemon_row,
+                items
+        );
+
+        binding.lvPokemons.setAdapter(adapter);
+        binding.lvPokemons.setOnClickListener((adapterView, view1, i, l) -> {
+            Pokemon item = (Pokemon) adapterView.getItemAtPosition(i);
+
+            Bundle datos = new Bundle();
+            datos.putSerializable("item", item);
+
+
+            NavHostFragment.findNavController(
+                    this).navigate(R.id.action_FirstFragment_to_SecondFragment, datos);
+
+        });
+
+        refresh();
 
         super.onViewCreated(view, savedInstanceState);
     }

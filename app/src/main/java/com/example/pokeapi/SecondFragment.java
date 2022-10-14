@@ -29,13 +29,17 @@ public class SecondFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
-            }
-        });
+        Bundle datos = getArguments();
+
+        if(datos != null) {
+            Pokemon pokemon = (Pokemon) datos.getSerializable("item");
+
+            binding.txtNombreDetalle.setText(pokemon.getName());
+            binding.txtAlturaDetalle.(pokemon.getHeight());
+            binding.txtPesoDetalle.setText(pokemon.getWeight());
+
+            Glide.with(getContext()).load(pokemon.getImage()).into(binding.ivPokemonGrande);
+        }
     }
 
     @Override
