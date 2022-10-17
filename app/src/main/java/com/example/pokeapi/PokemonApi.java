@@ -8,6 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class PokemonApi {
     void getPokemons() throws IOException {
@@ -15,10 +16,11 @@ public class PokemonApi {
 
         try {
             String result = HttpUtils.get(url);
-
-
             JSONObject jsonResult = new JSONObject(result);
             JSONArray results = jsonResult.getJSONArray("results");
+
+            ArrayList<Pokemon> pokemons = new ArrayList<>();
+
 
             for (int i = 0; i <   results.length(); i++) {
                 JSONObject pokemonJson = results.getJSONObject(i);

@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.bumptech.glide.Glide;
 import com.example.pokeapi.databinding.FragmentSecondBinding;
 
 public class SecondFragment extends Fragment {
@@ -35,10 +36,10 @@ public class SecondFragment extends Fragment {
             Pokemon pokemon = (Pokemon) datos.getSerializable("item");
 
             binding.txtNombreDetalle.setText(pokemon.getName());
-            binding.txtAlturaDetalle.(pokemon.getHeight());
+           // binding.txtAlturaDetalle.(pokemon.getHeight());
             binding.txtPesoDetalle.setText(pokemon.getWeight());
 
-            Glide.with(getContext()).load(pokemon.getImage()).into(binding.ivPokemonGrande);
+            Glide.with(getContext()).load(pokemon.getImage()).into(binding.ivPokemonGrande1);
         }
     }
 
