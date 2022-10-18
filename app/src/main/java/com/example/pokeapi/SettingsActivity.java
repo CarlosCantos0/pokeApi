@@ -1,12 +1,10 @@
 package com.example.pokeapi;
 
-import static androidx.fragment.app.FragmentManagerKt.commit;
-
 import android.os.Bundle;
-import android.preference.PreferenceFragment;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceFragmentCompat;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -17,12 +15,11 @@ public class SettingsActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.action_settings, new SettingsFragment)
+                    .replace(R.id.settings, new SettingsFragment())
                     .commit();
         }
-
-        ActionBar actionBar =  getSupportActionBar();
-        if(actionBar != null) {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
@@ -33,5 +30,4 @@ public class SettingsActivity extends AppCompatActivity {
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
         }
     }
-
 }

@@ -33,6 +33,7 @@ public class PokemonApi {
                 JSONObject jsondetails = new JSONObject(resultDetails);
 
                 pokemon.setHeight(jsondetails.getInt("height"));
+                pokemon.setWeight(jsondetails.getInt("weight"));
 
                 pokemons.add(pokemon);
             }

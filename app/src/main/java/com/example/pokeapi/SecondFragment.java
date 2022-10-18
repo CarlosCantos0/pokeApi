@@ -36,10 +36,11 @@ public class SecondFragment extends Fragment {
             Pokemon pokemon = (Pokemon) datos.getSerializable("item");
 
             binding.txtNombreDetalle.setText(pokemon.getName());
-           // binding.txtAlturaDetalle.(pokemon.getHeight());
+            int height = pokemon.getHeight();
+            binding.txtAlturaDetalle.setText(height);
             binding.txtPesoDetalle.setText(pokemon.getWeight());
 
-            Glide.with(getContext()).load(pokemon.getImage()).into(binding.ivPokemonGrande1);
+            //Glide.with(getContext()).load(pokemon.getImage()).into(binding.ivPokemonGrande1);
         }
     }
 
